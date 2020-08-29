@@ -14,10 +14,14 @@ import { DashboardComponent } from './component/dashboard/dashboard.component';
 import { PageNotFoundComponent } from './component/page-not-found/page-not-found.component';
 import { SpineerComponent } from './component/shared/spineer/spineer.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { AngularFireModule } from "@angular/fire";
-import { AngularFireAuthModule } from "@angular/fire/auth";
+import { AuthService } from './services/auth.service';
+import { VerifyEmailComponent } from './component/auth/verify-email/verify-email.component';
+import { LogoComponent } from './component/shared/logo/logo.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
-let firebaseConfig = {
+
+const firebaseConfig = {
   apiKey: 'AIzaSyBYFdiw3HbS6ugc8eowg4_7a8IFqEEhC2o',
   authDomain: 'keep-ae44a.firebaseapp.com',
   databaseURL: 'https://keep-ae44a.firebaseio.com',
@@ -38,6 +42,8 @@ let firebaseConfig = {
     DashboardComponent,
     PageNotFoundComponent,
     SpineerComponent,
+    VerifyEmailComponent,
+    LogoComponent,
   ],
   imports: [
     BrowserModule,
@@ -50,7 +56,7 @@ let firebaseConfig = {
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
