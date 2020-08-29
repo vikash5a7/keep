@@ -7,9 +7,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
+  public error = null;
+  public hide = true;
+  public valideUser = false;
+  public tokenValue = null;
+  public isLoading = false;
+  public form = {
+    email: null,
+    password: null
+  };
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  onSubmit() {
+
   }
 
 }
