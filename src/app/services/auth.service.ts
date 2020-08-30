@@ -4,14 +4,13 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { User } from '../model/user';
-
+import { map } from 'rxjs/operators';
 @Injectable({
   providedIn: 'root'
 })
 
 export class AuthService {
   userData: any; // Save logged in user data
-
   constructor(
     public afs: AngularFirestore,   // Inject Firestore service
     public afAuth: AngularFireAuth, // Inject Firebase auth service
@@ -23,6 +22,7 @@ export class AuthService {
     this.afAuth.authState.subscribe(user => {
       if (user) {
         this.userData = user;
+        localStorage.setItem('userUID', this.userData.uid);
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user'));
       } else {
@@ -32,6 +32,14 @@ export class AuthService {
     });
   }
 
+   userDetail() {
+    const uid = localStorage.getItem('userUID');
+    const employeeData = this.afs.collection('users').doc(uid).valueChanges();
+    console.log('user id ' +  uid);
+    console.log('user id ', uid);
+    console.log('data are the ', employeeData);
+    return employeeData;
+  }
 
    // Returns true when user is looged in and email is verified
   // Sign in with email/password
@@ -58,7 +66,7 @@ export class AuthService {
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user'));
-    return (user !== null && user.emailVerified !== false) ? true : false;
+    return (user !== null) ? true : false;
   }
 
   // Sign in with Google
@@ -87,7 +95,7 @@ export class AuthService {
     const userData: User = {
       uid: user.uid,
       email: user.email,
-      displayName: user.displayName,
+      displayName: 'unknown',
       photoURL: 'https://anotherjavaduke.files.wordpress.com/2018/08/avataaars-2.png',
     };
     return userRef.set(userData, {
@@ -99,7 +107,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['sign-in']);
+      this.router.navigate(['login']);
     });
   }
 

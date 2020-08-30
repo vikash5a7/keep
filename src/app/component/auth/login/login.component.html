@@ -27,8 +27,20 @@
                 <mat-error>Valid password Required</mat-error>
             </mat-form-field>
             <a fxFlexAlign="end" [routerLink]="[ '/forget-password']">Forget password ?</a>
-            <button [routerLink]="['/registration']" id="registration" mat-raised-button type="button" fxFlexAlign="start">Create Account</button>
-            <button mat-raised-button type="submit" fxFlexAlign="end" color="primary" [disabled]="!loginForm.valid" type="submit">Login Here</button>
+            <br>
+            <span>
+             News User ? Create account Your account  <a [routerLink]="['/registration']" fxFlexAlign="start"> click here</a>
+           </span>
+
+
+
+            <!-- <button [routerLink]="['/registration']" id="registration" mat-raised-button type="button" fxFlexAlign="start">Create Account</button> -->
+            <button style="block-size: auto; block-size: auto;
+            align-self: flex-end;
+            margin-top: 17px;
+            /* padding-top: 5px; */
+            width: 345px;
+            height: 34px" mat-raised-button type="submit" fxFlexAlign="end" color="primary" [disabled]="!loginForm.valid" type="submit">Login Here</button>
 
         </form>
     </mat-card>

@@ -27,6 +27,9 @@ export class LoginComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+      if (this.authservice.isLoggedIn){
+        this.router.navigate(['dashboard']);
+      }
   }
 
   onSubmit(
@@ -37,10 +40,8 @@ export class LoginComponent implements OnInit {
         duration: 2000,
       });
       console.log('Login successfully');
-      this.isLoading = true;
-      this.ngZone.run(() => {
-        this.router.navigate(['dashboard']);
-      });
+      this.isLoading = false;
+      this.router.navigate(['dashboard']);
     }).catch((error) => {
       this.isLoading = false;
       this.error = error.message;

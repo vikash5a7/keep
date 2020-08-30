@@ -1,0 +1,77 @@
+.example-container {
+    position: absolute;
+    top: 60px;
+    bottom: 0px;
+    left: 0;
+    right: 0;
+}
+
+.example-sidenav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+}
+
+.search {
+    background-color: rgba(230, 227, 227, 0.856);
+    padding: 3px;
+    width: 50%;
+    border-radius: 8px;
+    margin-left: 57px;
+    flex-direction: row;
+    border-style: groove;
+    background-color: white;
+    border-width: 1px;
+    border-radius: 14px;
+}
+
+.input {
+    width: 88%;
+    font-size: 16px;
+    border: none !important;
+    background-color: rgba(255, 255, 255, 0.856);
+}
+
+input.input:focus {
+    outline-width: 0;
+}
+
+// .example-footer {
+//     position: fixed;
+//     bottom: 0;
+//     left: 0;
+//     right: 0;
+// }
+.imageIcon {
+    img {
+        margin-top: 10%;
+        width: 40px;
+        margin-left: 10%;
+        border-radius: 50%;
+        display: block;
+    }
+}
+
+.profilepic {
+    img {
+        margin-bottom: 800px;
+        width: 40px;
+        margin-left: 50px;
+        border-radius: 60%;
+        display: block;
+    }
+}
+
+.mat-menu-item {
+    margin-top: 20px;
+    width: 200px;
+}
+
+#btnforprofile {
+    margin-left: 60px;
+}
+
+button:focus {
+    outline: 0;
+}

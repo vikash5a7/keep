@@ -1,6 +1,7 @@
 import { AuthService } from 'src/app/services/auth.service';
 import { Component, OnInit } from '@angular/core';
 import {MatSnackBar} from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-singup',
   templateUrl: './singup.component.html',
@@ -18,7 +19,8 @@ export class SingupComponent implements OnInit {
   confirmPassword: null,
   };
   constructor( private authservice: AuthService,
-               private snackBar: MatSnackBar) { }
+               private snackBar: MatSnackBar,
+               public router: Router,) { }
 
   ngOnInit(): void {
   }
@@ -31,7 +33,8 @@ export class SingupComponent implements OnInit {
       });
       console.log('singing sucessfull');
       console.log('user infoe', result);
-      this.isloading = true;
+      this.isloading = false;
+      this.router.navigate(['dashboard']);
       this.authservice.SetUserData(result.user);
     }).catch((error) => {
       this.isloading = false;

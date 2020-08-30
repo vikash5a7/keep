@@ -19,6 +19,13 @@ import { VerifyEmailComponent } from './component/auth/verify-email/verify-email
 import { LogoComponent } from './component/shared/logo/logo.component';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { SidenavComponent } from './component/sidenav/sidenav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
 
 
 const firebaseConfig = {
@@ -44,6 +51,7 @@ const firebaseConfig = {
     SpineerComponent,
     VerifyEmailComponent,
     LogoComponent,
+    SidenavComponent,
   ],
   imports: [
     BrowserModule,
@@ -54,7 +62,13 @@ const firebaseConfig = {
     ReactiveFormsModule,
     FlexLayoutModule,
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireAuthModule
+    AngularFireAuthModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule
   ],
   providers: [AuthService],
   bootstrap: [AppComponent]
